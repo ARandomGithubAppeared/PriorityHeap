@@ -1,4 +1,6 @@
 import java.util.Comparator;
+import java.util.Random;
+import java.util.Scanner;
 
 public class PriorityQueue<E> implements RMCPriorityQueue<E> {
 
@@ -114,11 +116,24 @@ public class PriorityQueue<E> implements RMCPriorityQueue<E> {
 	}
 
 	public static void main(String[] args) {
-		PriorityQueue<Integer> john = new PriorityQueue<Integer>(new IntegerComparator(), 50);
-		for (int x = 0; x < 40; x++) {
-			john.add((int) Math.floor(100 * Math.random()));
+		PriorityQueue<Integer> john = new PriorityQueue<Integer>(new IntegerComparator(), 10);
+		Scanner scan = new Scanner (System.in);
+		int[] intarray= new int[Integer.parseInt(args[0])];
+		scan.close();
+		Random rng = new Random();
+		for (int x = 0; x < intarray.length; x++) {
+			intarray[x]=rng.nextInt(1000);
+			if (intarray.length<=20){
+				System.out.println(intarray[x]);
+			}
 		}
-		john.display();
+		for (int x=0;x<intarray.length;x++){
+			john.add(intarray[x]);
+		}
+		System.out.println();
+		if(intarray.length<=20){
+			john.display();
+		}
 
 	}
 
